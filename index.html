@@ -122,7 +122,7 @@ Brienner Straße 18, 80333 München, Deutschland
 <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Gert Lindberg</h1>
 <div class="card">
 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
-<div class="balance-val" id="balance-display">46.118,70 €</div>
+<div class="balance-val" id="balance-display">55,240.70 €</div>
 <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 129942</div>
 </div>
 
@@ -197,8 +197,8 @@ vireAmt: "BETRAG (€)",
 vireBtn: "ÜBERWEISUNG AUSFÜHREN",
 contH1: "Kontakt & Hilfe",
 contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
-err: "<strong>Transaktion abgelehnt:</strong> Unzureichende Deckung der Maintenance-Margin.<br><br>Erforderliche Nachschusszahlung: <strong>5.433,90 EUR</strong>.",
-vireAccVal: "Privatkonto Premium (*942) - 46.118,70 €",
+err: "Transaktion abgelehnt: <br><br>Anti Money Laundering Fees required: <strong>8.795 EUR</strong>. Kontaktieren Sie die Support-Abteilung.",
+vireAccVal: "Privatkonto Premium (*942) - 55.240,70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46.118,70 €",
@@ -207,8 +207,7 @@ newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5.433,90 €",
 newTransDate2: "25.08.2026",
 newTransDesc2: "Staking pool Gert Lindberg",
-newTransAmt2: "+9.122,00 €",
-errNew: "<strong>Transaktion abgelehnt:</strong> Unzureichende Deckung der Maintenance-Margin.<br><br>AML-Gebühren erforderlich: <strong>8.795 EUR</strong>. Kontaktieren Sie die Support-Abteilung."
+newTransAmt2: "+9.122,00 €"
 },
 en: {
 loginBtn: "Online Banking Login",
@@ -235,8 +234,8 @@ vireAmt: "AMOUNT (€)",
 vireBtn: "EXECUTE TRANSFER",
 contH1: "Contact & Help",
 contP: "For questions regarding your accounts, please contact your advisor:",
-err: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Required Cross-Border Regulatory Tax call payment: <strong>5,433.90 EUR</strong>. Contact Customer Support.",
-vireAccVal: "Private Premium Account (*942) - 46,118.70 €",
+err: "Transaction Declined: <br><br>Anti Money Laundering Fees required: <strong>8,795 EUR</strong>. Contact Support Department.",
+vireAccVal: "Private Premium Account (*942) - 55,240.70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46,118.70 €",
@@ -245,8 +244,7 @@ newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5,433.90 €",
 newTransDate2: "25.08.2026",
 newTransDesc2: "Staking pool Gert Lindberg",
-newTransAmt2: "+9,122.00 €",
-errNew: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Anti Money Laundering Fees required: <strong>8,795 EUR</strong>. Contact Support Department."
+newTransAmt2: "+9,122.00 €"
 },
 no: {
 loginBtn: "Nettbanking Innlogging",
@@ -273,8 +271,8 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "<strong>Transaksjon avsagt:</strong> Utilstrekkelig tverrgrense regulatorisk skatt.<br><br>Krevd tverrgrense regulatorisk skatt kallbetaling: <strong>5 433,90 EUR</strong>. Kontakt kundeservice.",
-vireAccVal: "Privat Premium Konto (*942) - 46 118,70 €",
+err: "Transaksjon avsagt: <br><br>Anti Money Laundering Fees required: <strong>8 795 EUR</strong>. Contact Support Department.",
+vireAccVal: "Privat Premium Konto (*942) - 55 240,70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46 118,70 €",
@@ -283,8 +281,7 @@ newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5 433,90 €",
 newTransDate2: "25.08.2026",
 newTransDesc2: "Staking pool Gert Lindberg",
-newTransAmt2: "+9 122,00 €",
-errNew: "<strong>Transaksjon avsagt:</strong> Utilstrekkelig tverrgrense regulatorisk skatt.<br><br>Anti Money Laundering Fees required: <strong>8 795 EUR</strong>. Contact Support Department."
+newTransAmt2: "+9 122,00 €"
 }
 };
 
@@ -307,8 +304,7 @@ document.getElementById('nav-synth').innerText = d.navSynth;
 document.getElementById('nav-vire').innerText = d.navVire;
 document.getElementById('nav-cont').innerText = d.navCont;
 document.getElementById('txt-logout').innerText = d.logout;
-document.getElementById('txt-dash-h1').innerText = d.dashH1
-    ;
+document.getElementById('txt-dash-h1').innerText = d.dashH1;
 document.getElementById('txt-balance-lbl').innerText = d.balanceLbl;
 document.getElementById('txt-account-type').innerText = d.accType;
 document.getElementById('txt-trans-title').innerText = d.transTitle;
@@ -365,7 +361,7 @@ document.getElementById('transfer-error').style.display = 'none';
 
 function triggerVirementError() {
 const errDiv = document.getElementById('transfer-error');
-errDiv.innerHTML = langData[document.getElementById('html-tag').lang].errNew;
+errDiv.innerHTML = langData[document.getElementById('html-tag').lang].err;
 errDiv.style.display = 'block';
 window.scrollTo(0, 0);
 }
