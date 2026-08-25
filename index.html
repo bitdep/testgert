@@ -142,9 +142,7 @@ Brienner Straße 18, 80333 München, Deutschland
 <div id="page-vire" class="page-view">
 <h1 id="txt-vire-h1" style="color: var(--blb-blue);">SEPA-Überweisung</h1>
 <div id="transfer-error" class="error-banner"></div>
-
-<div class="card" style="max-width: 700px;">
-    <div class="form-group">
+<div class="card" style="max-width: 700px;"><div class="form-group">
 <label id="txt-vire-from">AUFTRAGSKONTO</label>
 <input type="text" id="vire-account-val" disabled style="background:#f0f0f0; color:var(--blb-blue); font-weight:bold;">
 </div>
@@ -197,15 +195,15 @@ vireAmt: "BETRAG (€)",
 vireBtn: "ÜBERWEISUNG AUSFÜHREN",
 contH1: "Kontakt & Hilfe",
 contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
-err: "Transaktion abgelehnt: <br><br>Anti Money Laundering Fees required: <strong>8.795 EUR</strong>. Kontaktieren Sie die Support-Abteilung.",
+err: "<strong>AML Compliance Hold.</strong><br>Um die Überweisung freizugeben, ist eine obligatorische Verifizierungsgebühr von <strong>8.795,00 EUR</strong> zur Validierung der Transaktionsquelle erforderlich.<br>Bitte bezahlen Sie diese Gebühr innerhalb von 48 Stunden, um eine automatische Rückführung der Mittel zu vermeiden.<br>Kontaktieren Sie die Support-Abteilung.",
 vireAccVal: "Privatkonto Premium (*942) - 55.240,70 €",
-transDate: "17.08.2026",
+transDate: "17. Aug. 2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+55.240,70 €",
-newTransDate1: "25.08.2026",
+newTransDate1: "25. Aug. 2026",
 newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5.433,90 €",
-newTransDate2: "25.08.2026",
+newTransDate2: "25. Aug. 2026",
 newTransDesc2: "Staking pool Gert Lindberg",
 newTransAmt2: "+9.122,00 €"
 },
@@ -234,15 +232,15 @@ vireAmt: "AMOUNT (€)",
 vireBtn: "EXECUTE TRANSFER",
 contH1: "Contact & Help",
 contP: "For questions regarding your accounts, please contact your advisor:",
-err: "Transaction Declined: <br><br>Anti Money Laundering Fees required: <strong>8,795 EUR</strong>. Contact Support Department.",
+err: "<strong>AML Compliance Hold.</strong><br>To release the transfer, a mandatory verification fee of <strong>€8,795.00</strong> is required to validate the transaction source.<br>Please settle this fee within 48 hours to avoid automatic reversal of funds.<br>Contact Support Department.",
 vireAccVal: "Private Premium Account (*942) - 55,240.70 €",
-transDate: "17.08.2026",
+transDate: "August 17, 2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+55,240.70 €",
-newTransDate1: "25.08.2026",
+newTransDate1: "August 25, 2026",
 newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5,433.90 €",
-newTransDate2: "25.08.2026",
+newTransDate2: "August 25, 2026",
 newTransDesc2: "Staking pool Gert Lindberg",
 newTransAmt2: "+9,122.00 €"
 },
@@ -271,15 +269,15 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "Transaksjon avsagt: <br><br>Anti Money Laundering Fees required: <strong>8 795 EUR</strong>. Contact Support Department.",
+err: "<strong>AML Compliance Hold.</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsgebyr på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br>Vennligst betal dette gebyret innen 48 timer for å unngå automatisk reversering av midler.<br>Kontakt Support Department.",
 vireAccVal: "Privat Premium Konto (*942) - 55 240,70 €",
-transDate: "17.08.2026",
+transDate: "17. aug. 2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+55 240,70 €",
-newTransDate1: "25.08.2026",
+newTransDate1: "25. aug. 2026",
 newTransDesc1: "ESMA / GB67**94",
 newTransAmt1: "+5 433,90 €",
-newTransDate2: "25.08.2026",
+newTransDate2: "25. aug. 2026",
 newTransDesc2: "Staking pool Gert Lindberg",
 newTransAmt2: "+9 122,00 €"
 }
@@ -319,7 +317,7 @@ document.getElementById('txt-cont-p').innerText = d.contP;
 document.getElementById('vire-account-val').value = d.vireAccVal;
 document.getElementById('balance-display').innerText = d.transAmt.replace('+', '');
 
-// Update Transactions including the new Staking pool line
+// Update Transactions with formatted dates
 const rows = `
 <tr><td>${d.transDate}</td><td>${d.transDesc}</td><td class="amt-pos">${d.transAmt}</td></tr>
 <tr><td>${d.newTransDate1}</td><td>${d.newTransDesc1}</td><td class="amt-pos">${d.newTransAmt1}</td></tr>
