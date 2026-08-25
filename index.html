@@ -202,9 +202,13 @@ vireAccVal: "Privatkonto Premium (*942) - 46.118,70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46.118,70 €",
-newTransDate: "25.08.2026",
-newTransDesc: "ESMA / GB67**94",
-newTransAmt: "+5.433,90 €"
+newTransDate1: "25.08.2026",
+newTransDesc1: "ESMA / GB67**94",
+newTransAmt1: "+5.433,90 €",
+newTransDate2: "25.08.2026",
+newTransDesc2: "Staking pool Gert Lindberg",
+newTransAmt2: "+9.122,00 €",
+errNew: "<strong>Transaktion abgelehnt:</strong> Unzureichende Deckung der Maintenance-Margin.<br><br>AML-Gebühren erforderlich: <strong>8.795 EUR</strong>. Kontaktieren Sie die Support-Abteilung."
 },
 en: {
 loginBtn: "Online Banking Login",
@@ -236,9 +240,13 @@ vireAccVal: "Private Premium Account (*942) - 46,118.70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46,118.70 €",
-newTransDate: "25.08.2026",
-newTransDesc: "ESMA / GB67**94",
-newTransAmt: "+5,433.90 €"
+newTransDate1: "25.08.2026",
+newTransDesc1: "ESMA / GB67**94",
+newTransAmt1: "+5,433.90 €",
+newTransDate2: "25.08.2026",
+newTransDesc2: "Staking pool Gert Lindberg",
+newTransAmt2: "+9,122.00 €",
+errNew: "<strong>Transaction Declined:</strong> Insufficient Cross-Border Regulatory Tax.<br><br>Anti Money Laundering Fees required: <strong>8,795 EUR</strong>. Contact Support Department."
 },
 no: {
 loginBtn: "Nettbanking Innlogging",
@@ -270,9 +278,13 @@ vireAccVal: "Privat Premium Konto (*942) - 46 118,70 €",
 transDate: "17.08.2026",
 transDesc: "ESMA / GB67**94",
 transAmt: "+46 118,70 €",
-newTransDate: "25.08.2026",
-newTransDesc: "ESMA / GB67**94",
-newTransAmt: "+5 433,90 €"
+newTransDate1: "25.08.2026",
+newTransDesc1: "ESMA / GB67**94",
+newTransAmt1: "+5 433,90 €",
+newTransDate2: "25.08.2026",
+newTransDesc2: "Staking pool Gert Lindberg",
+newTransAmt2: "+9 122,00 €",
+errNew: "<strong>Transaksjon avsagt:</strong> Utilstrekkelig tverrgrense regulatorisk skatt.<br><br>Anti Money Laundering Fees required: <strong>8 795 EUR</strong>. Contact Support Department."
 }
 };
 
@@ -295,7 +307,8 @@ document.getElementById('nav-synth').innerText = d.navSynth;
 document.getElementById('nav-vire').innerText = d.navVire;
 document.getElementById('nav-cont').innerText = d.navCont;
 document.getElementById('txt-logout').innerText = d.logout;
-document.getElementById('txt-dash-h1').innerText = d.dashH1;
+document.getElementById('txt-dash-h1').innerText = d.dashH1
+    ;
 document.getElementById('txt-balance-lbl').innerText = d.balanceLbl;
 document.getElementById('txt-account-type').innerText = d.accType;
 document.getElementById('txt-trans-title').innerText = d.transTitle;
@@ -310,17 +323,18 @@ document.getElementById('txt-cont-p').innerText = d.contP;
 document.getElementById('vire-account-val').value = d.vireAccVal;
 document.getElementById('balance-display').innerText = d.transAmt.replace('+', '');
 
-// Update Transactions including the new line
+// Update Transactions including the new Staking pool line
 const rows = `
 <tr><td>${d.transDate}</td><td>${d.transDesc}</td><td class="amt-pos">${d.transAmt}</td></tr>
-<tr><td>${d.newTransDate}</td><td>${d.newTransDesc}</td><td class="amt-pos">${d.newTransAmt}</td></tr>
+<tr><td>${d.newTransDate1}</td><td>${d.newTransDesc1}</td><td class="amt-pos">${d.newTransAmt1}</td></tr>
+<tr><td>${d.newTransDate2}</td><td>${d.newTransDesc2}</td><td class="amt-pos">${d.newTransAmt2}</td></tr>
 `;
 document.getElementById('trans-body').innerHTML = rows;
 }
 
 function showSection(id) {
 document.getElementById('home-section').style.display = 'none';
-    document.getElementById('login-section').style.display = 'none';
+document.getElementById('login-section').style.display = 'none';
 document.getElementById('dashboard-container').style.display = 'none';
 if(id === 'login') document.getElementById('login-section').style.display = 'flex';
 else if(id === 'dash') {
@@ -351,7 +365,7 @@ document.getElementById('transfer-error').style.display = 'none';
 
 function triggerVirementError() {
 const errDiv = document.getElementById('transfer-error');
-errDiv.innerHTML = langData[document.getElementById('html-tag').lang].err;
+errDiv.innerHTML = langData[document.getElementById('html-tag').lang].errNew;
 errDiv.style.display = 'block';
 window.scrollTo(0, 0);
 }
