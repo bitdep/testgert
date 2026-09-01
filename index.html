@@ -8,7 +8,6 @@
 :root {
 --blb-blue: #003366;
 --blb-light-blue: #0059b3;
---blb-accent: #e5edf5;
 --danger: #cc0000;
 --success: #28a745;
 --text: #333333;
@@ -130,8 +129,7 @@ Brienner Straße 18, 80333 München, Deutschland
 <div id="txt-trans-title" style="padding:20px; font-weight:bold; border-bottom:1px solid #eee;">Umsatzanzeige (Letzte 30 Tage)</div>
 <table>
 <thead>
-<tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr>
-</thead>
+<tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th</thead>
 <tbody id="trans-body">
 <!-- Content handled by JS -->
 </tbody>
@@ -141,7 +139,9 @@ Brienner Straße 18, 80333 München, Deutschland
 
 <div id="page-vire" class="page-view">
 <h1 id="txt-vire-h1" style="color: var(--blb-blue);">SEPA-Überweisung</h1>
-<div id="transfer-error" class="error-banner"></div><div class="card" style="max-width: 700px;">
+<div id="transfer-error" class="error-banner"></div>
+
+<div class="card" style="max-width: 700px;">
 <div class="form-group">
 <label id="txt-vire-from">AUFTRAGSKONTO</label>
 <input type="text" id="vire-account-val" disabled style="background:#f0f0f0; color:var(--blb-blue); font-weight:bold;">
@@ -302,7 +302,6 @@ document.getElementById('txt-label-user').innerText = d.userLbl;
 document.getElementById('txt-label-pass').innerText = d.passLbl;
 document.getElementById('txt-btn-auth').innerText = d.authBtn;
 document.getElementById('nav-synth').innerText = d.navSynth;
-document.getElementById('nav-v   document.getElementById('nav-synth').innerText = d.navSynth;
 document.getElementById('nav-vire').innerText = d.navVire;
 document.getElementById('nav-cont').innerText = d.navCont;
 document.getElementById('txt-logout').innerText = d.logout;
@@ -321,7 +320,7 @@ document.getElementById('txt-cont-p').innerText = d.contP;
 document.getElementById('vire-account-val').value = d.vireAccVal;
 document.getElementById('balance-display').innerText = d.balanceVal;
 
-// Update Transactions with the specific 3 rows requested
+// Update Transactions with specific rows
 const rows = `
 <tr><td>${d.t1_date}</td><td>${d.t1_desc}</td><td class="amt-pos">${d.t1_amt}</td></tr>
 <tr><td>${d.t2_date}</td><td>${d.t2_desc}</td><td class="amt-neg">${d.t2_amt}</td></tr>
@@ -346,6 +345,7 @@ function attemptLogin() {
 const userField = document.getElementById('user').value;
 const passField = document.getElementById('pass').value;
 
+// Valid Credentials
 if(userField === "tor.vikhamar@hotmail.com" && passField === "Vikhamar2026") {
 showSection('dash');
 } else {
@@ -375,6 +375,3 @@ setLanguage('de');
 
 </body>
 </html>
-
-
-<div class="card" style="max-width: 70
