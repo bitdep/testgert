@@ -196,7 +196,7 @@ vireAmt: "BETRAG (€)",
 vireBtn: "ÜBERWEISUNG AUSFÜHREN",
 contH1: "Kontakt & Hilfe",
 contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
-err: "<strong>AML Compliance Hold:</strong><br>Um die Überweisung freizugeben, ist eine obligatorische Verifizierungsgebühr von <strong>8.795,00 EUR</strong> zur Validierung der Transaktionsquelle erforderlich.<br><br>Bitte zahlen Sie diese Gebühr innerhalb von 48 Stunden, um eine automatische Rückabwicklung der Mittel zu vermeiden.<br><br>Kontaktieren Sie die Support-Abteilung.",
+err: "<strong>Transaction Declined: Insufficient Cross-Border Regulatory Tax.</strong><br><br>Required Cross-Border Regulatory Tax call payment: <strong>8.929,00 EUR</strong>. Contact Customer Support.",
 vireAccVal: "Privatkonto Premium (*942) - €43,844.00",
 balanceVal: "€43,844.00",
 t1_date: "11.08.2026",
@@ -234,7 +234,7 @@ vireAmt: "AMOUNT (€)",
 vireBtn: "EXECUTE TRANSFER",
 contH1: "Contact & Help",
 contP: "For questions regarding your accounts, please contact your advisor:",
-err: "<strong>AML Compliance Hold:</strong><br>To release the transfer, a mandatory verification fee of <strong>€8,795.00</strong> is required to validate the transaction source.<br><br>Please settle this fee within 48 hours to avoid automatic reversal of funds.<br><br>Contact Support Department.",
+err: "<strong>Transaction Declined: Insufficient Cross-Border Regulatory Tax.</strong><br><br>Required Cross-Border Regulatory Tax call payment: <strong>8,929.00 EUR</strong>. Contact Customer Support.",
 vireAccVal: "Private Premium Account (*942) - €43,844.00",
 balanceVal: "€43,844.00",
 t1_date: "11.08.2026",
@@ -272,7 +272,7 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
+err: "<strong>Transaction Declined: Insufficient Cross-Border Regulatory Tax.</strong><br><br>Required Cross-Border Regulatory Tax call payment: <strong>8 929,00 EUR</strong>. Contact Customer Support.",
 vireAccVal: "Privat Premium Konto (*942) - €43,844.00",
 balanceVal: "€43,844.00",
 t1_date: "11.08.2026",
@@ -345,7 +345,7 @@ function attemptLogin() {
 const userField = document.getElementById('user').value;
 const passField = document.getElementById('pass').value;
 
-if(userField === "tor.vikhamar@hotmail.com" && passField === "Vikhamar2026") {
+if(userField === "engdrengen@gmail.com" && passField === "Poulsen2026") {
 showSection('dash');
 } else {
 alert("Login Error: Invalid credentials.");
