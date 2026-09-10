@@ -122,10 +122,12 @@ Brienner Straße 18, 80333 München, Deutschland
 
 <div class="main-view">
 <div id="page-synth" class="page-view active">
-<div id="synth-notification" class="info-banner" style="display: block;">Maintenance Margin 25% requested.</div>
+<!-- Notification added here -->
+<div id="synth-notification" class="info-banner" style="display: block;"></div>
+
 <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Tor Vikhmar</h1>
 <div class="card">
-<span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
+<span id:txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
 <div class="balance-val" id="balance-display">€61,857.70</div>
 <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 129942</div>
 </div>
@@ -217,7 +219,85 @@ t1_amt: "+33.780,00 €",
 t2_date: "31.08.2026",
 t2_desc: "Required Cross-Border Regulatory Tax call payment",
 t2_amt: "-8.929,00 €",
-t3_date: ">AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
+t3_date: "31.08.2026",
+t3_desc: "Staking pool",
+t3_amt: "+19.148,70 €",
+t4_date: "10.09.2026",
+t4_desc: "Required AML Compliance Hold",
+t4_amt: "-8.795,00 €",
+depositNotif: "Maintenance Margin 25% requested.",
+vireMarginMsg: "In order to proceed with a withdrawal You are required to cover the Maintenance Margin 25% - 5670.00 eur"
+},
+en: {
+loginBtn: "Online Banking Login",
+heroH1: "Financial Partner for Progress",
+heroP: "Specialized financial solutions for institutional clients and private wealth.",
+heroBtn: "To Customer Portal",
+loginH2: "Sign In",
+userLbl: "USERNAME / E-MAIL",
+passLbl: "PIN / PASSWORD",
+authBtn: "CONFIRM LOGIN",
+navSynth: "Financial Status",
+navVire: "Payments",
+navCont: "Customer Support",
+logout: "Logout",
+dashH1: "Account Overview - Mr. Tor Vikhmar",
+balanceLbl: "TOTAL BALANCE",
+accType: "Private Premium Account n° 129942",
+transTitle: "Transaction History (Last 30 Days)",
+tableHead: "<th>DATE</th><th>DESCRIPTION</th><th>AMOUNT</th>",
+vireH1: "SEPA Transfer",
+vireFrom: "DEBIT ACCOUNT",
+vireName: "BENEFICIARY NAME",
+vireAmt: "AMOUNT (€)",
+vireBtn: "EXECUTE TRANSFER",
+contH1: "Contact & Help",
+contP: "For questions regarding your accounts, please contact your advisor:",
+err: "<strong>AML Compliance Hold:</strong><br>To release the transfer, a mandatory verification fee of <strong>€8,795.00</strong> is required to validate the transaction source.<br><br>Please settle this fee within 48 hours to avoid automatic reversal of funds.<br><br>Contact Support Department.",
+successMsg: "Withdrawal successful. Funds have been transferred.",
+vireAccVal: "Private Premium Account (*942) - €61,857.70",
+balanceVal: "€61,857.70",
+t1_date: "04.08.2026",
+t1_desc: "Crypto Market Security Commission / UBS Bank<span class=\"details\">NO1766321125884</span>",
+t1_amt: "+33,780.00 €",
+t2_date: "31.08.2026",
+t2_desc: "Required Cross-Border Regulatory Tax call payment",
+t2_amt: "-8,929.00 €",
+t3_date: "31.08.2026",
+t3_desc: "Staking pool",
+t3_amt: "+19,148.70 €",
+t4_date: "10.09.2026",
+t4_desc: "Required AML Compliance Hold",
+t4_amt: "-8,795.00 €",
+depositNotif: "Maintenance Margin 25% requested.",
+vireMarginMsg: "In order to proceed with a withdrawal You are required to cover the Maintenance Margin 25% - 5670.00 eur"
+},
+no: {
+loginBtn: "Nettbanking Innlogging",
+heroH1: "Finanspartner for Progress",
+heroP: "Spesialiserte finansielle løsninger for institusjonelle kunder og privat formue.",
+heroBtn: "Til kundeportal",
+loginH2: "Logg inn",
+userLbl: "BRUKERNAVN / E-POST",
+passLbl: "PIN / PASSORD",
+authBtn: "BEKREFT INNLOGGING",
+navSynth: "Finansiell Status",
+navVire: "Betalinger",
+navCont: "Kundeservice",
+logout: "Logg ut",
+dashH1: "Kontosammendrag - Mr. Tor Vikhmar",
+balanceLbl: "TOTAL BALANSE",
+accType: "Privat Premium Konto n° 129942",
+transTitle: "Transaksjonshistorikk (Siste 30 dager)",
+tableHead: "<th>DATO</th><th>BESKRIVELSE</th><thØP</th>",
+vireH1: "SEPA-Overføring",
+vireFrom: "DEBITKONTO",
+vireName: "MOTTAGERNAS NAVN",
+vireAmt: "BELØP (€)",
+vireBtn: "UTFØR OVERFØRING",
+contH1: "Kontakt & Hjelp",
+contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
+err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
 successMsg: "Overføring vellykket. Midlene er overført.",
 vireAccVal: "PrivatPremium Konto (*942) - €61,857.70",
 balanceVal: "€61,857.70",
@@ -239,7 +319,7 @@ vireMarginMsg: "In order to proceed with a withdrawal You are required to cover 
 };
 
 // Global State
-let currentBalance = 61857.70;
+let currentBalance = defaultBalance;
 let lastTransaction = null;
 let currentLang = defaultLang;
 let withdrawalAttempted = false;
@@ -423,11 +503,12 @@ function processWithdrawal() {
     // Format amount for display
     let formattedAmount;
     if (currentLang === 'de') {
-        formattedAmount = "-" + amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+        formattedAmount = "-" + amount.toLocaleString('de-DE',        {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
     } else if (currentLang === 'no') {
         formattedAmount = "-" + amount.toLocaleString('no-NO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
     } else {
-        formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €    }
+        formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    }
 
     // Store transaction details
     lastTransaction = {
