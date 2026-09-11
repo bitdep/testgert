@@ -18,8 +18,7 @@ body, html { margin: 0; padding: 0; font-family: "Arial", sans-serif; background
 
 /* --- LANGUAGE PICKER --- */
 .lang-switcher { display: flex; gap: 10px; align-items: center; margin-right: 20px; }
-.lang-btn { cursor: pointer; font-size: 12px; font-weight: bold; color: #666; padding: 5px; border: 1px solid #ccc; border-radius: 3px; background: #fff; text-transform: uppercase; transition: 0.2s; }
-.lang-btn:hover { background: #f0f0f0; }
+.lang-btn { cursor: pointer; font-size: 12px; font-weight: bold; color: #666; padding: 5px; border: 1px solid #ccc; border-radius: 3px; background: #fff; text-transform: uppercase; }
 .lang-btn.active { background: var(--blb-blue); color: #fff; border-color: var(--blb-blue); }
 
 /* --- NAVIGATION --- */
@@ -27,53 +26,49 @@ body, html { margin: 0; padding: 0; font-family: "Arial", sans-serif; background
 .logo { font-size: 28px; font-weight: bold; color: var(--blb-blue); letter-spacing: -1px; }
 .logo span { color: var(--blb-light-blue); }
 .nav-right { display: flex; align-items: center; }
-.btn-portal { background: var(--blb-blue); color: white; padding: 10px 20px; border-radius: 2px; text-decoration: none; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 13px; border: none; transition: 0.2s; }
+.btn-portal { background: var(--blb-blue); color: white; padding: 10px 20px; border-radius: 2px; text-decoration: none; font-weight: bold; cursor: pointer; text-transform: uppercase; font-size: 13px; }
 .btn-portal:hover { background: var(--blb-light-blue); }
 
 /* --- SECTIONS --- */
-#home-section, #login-section, #dashboard-container { display: none; }
-#home-section.active { display: block; }
-#login-section.active { display: flex; height: 100vh; justify-content: center; align-items: center; }
-#dashboard-container.active { display: block; height: 100vh; width: 100%; overflow: hidden; }
-
+#home-section { display: block; }
 .hero { height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(rgba(0,51,102,0.7), rgba(0,51,102,0.7)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200') center/cover; color: white; }
 .footer-addr { background: #fff; padding: 40px; text-align: center; border-top: 1px solid #ddd; font-size: 14px; color: #666; }
 
-.login-card { background: #fff; padding: 40px; border-top: 5px solid var(--blb-blue); width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); border-radius: 4px; }
+#login-section { display: none; height: 85vh; justify-content: center; align-items: center; }
+.login-card { background: #fff; padding: 40px; border-top: 5px solid var(--blb-blue); width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-/* --- DASHBOARD STYLES --- */
-.sidebar { width: 260px; background: var(--blb-blue); height: 100vh; position: fixed; color: white; z-index: 10; display: flex; flex-direction: column; }
+#dashboard-container { display: none; height: 100vh; width: 100%; }
+.sidebar { width: 260px; background: var(--blb-blue); height: 100vh; position: fixed; color: white; z-index: 10; }
 .sidebar-brand { padding: 30px; font-size: 22px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .sidebar-item { padding: 18px 30px; cursor: pointer; transition: 0.2s; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .sidebar-item:hover { background: var(--blb-light-blue); }
 .sidebar-item.active { background: var(--blb-light-blue); font-weight: bold; }
 
-.main-view { margin-left: 260px; padding: 40px; width: calc(100% - 260px); box-sizing: border-box; min-height: 100vh; background: var(--bg); }
+.main-view { margin-left: 260px; padding: 40px; width: calc(100% - 260px); box-sizing: border-box; min-height: 100vh; }
 .page-view { display: none; }
 .page-view.active { display: block; }
 
-.card { background: #fff; padding: 30px; margin-bottom: 30px; border: 1px solid #e1e1e1; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.card { background: #fff; padding: 30px; margin-bottom: 30px; border: 1px solid #e1e1e1; }
 .balance-val { font-size: 38px; font-weight: bold; color: var(--blb-blue); margin: 15px 0; }
 
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 8px; color: var(--blb-blue); }
-.form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; box-sizing: border-box; font-size: 14px; border-radius: 2px; }
-.btn-submit { width: 100%; padding: 15px; background: var(--blb-light-blue); color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; border-radius: 2px; }
+.form-group input { width: 100%; padding: 12px; border: 1px solid #ccc; box-sizing: border-box; font-size: 14px; }
+.btn-submit { width: 100%; padding: 15px; background: var(--blb-light-blue); color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
 .btn-submit:hover { background: var(--blb-blue); }
 
 table { width: 100%; border-collapse: collapse; }
-th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 12px; border-bottom: 2px solid #ddd; color: #555; }
+th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 12px; border-bottom: 2px solid #ddd; }
 td { padding: 15px; border-bottom: 1px solid #eee; font-size: 14px; }
 .amt-pos { color: var(--success); font-weight: bold; }
 .amt-neg { color: var(--danger); font-weight: bold; }
 
-.error-banner { background: #fff0f0; color: #b30000; padding: 20px; border-left: 5px solid var(--danger); margin-bottom: 30px; display: none; border-radius: 2px; }
-.success-banner { background: #e6fffa; color: #0052cc; padding: 20px; border-left: 5px solid var(--success); margin-bottom: 30px; display: none; font-weight: bold; border-radius: 2px; }
+.error-banner { background: #fff0f0; color: #b30000; padding: 20px; border-left: 5px solid var(--danger); margin-bottom: 30px; display: none; }
+.success-banner { background: #e6fffa; color: #0052cc; padding: 20px; border-left: 5px solid var(--success); margin-bottom: 30px; display: none; font-weight: bold; }
 </style>
 </head>
 <body>
 
-<!-- PUBLIC NAV -->
 <nav id="public-nav">
 <div class="logo">Bayern<span>LB</span></div>
 <div class="nav-right">
@@ -82,17 +77,16 @@ td { padding: 15px; border-bottom: 1px solid #eee; font-size: 14px; }
 <div class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</div>
 <div class="lang-btn" id="btn-no" onclick="setLanguage('no')">NO</div>
 </div>
-<div class="btn-portal" id="txt-login-btn" onclick="goToLogin()">Online-Banking Login</div>
+<div class="btn-portal" id="txt-login-btn" onclick="showSection('login')">Online-Banking Login</div>
 </div>
 </nav>
 
-<!-- HOME SECTION -->
-<section id="home-section" class="active">
+<section id="home-section">
 <div class="hero">
 <div>
 <h1 id="txt-hero-h1">Finanzpartner für den Fortschritt</h1>
 <p id="txt-hero-p">Spezialisierte Finanzlösungen für institutionelle Kunden und Privatvermögen.</p><br>
-<button class="btn-submit" id="txt-hero-btn" style="width:280px;" onclick="goToLogin()">Zum Kundenportal</button>
+<button class="btn-submit" id="txt-hero-btn" style="width:280px;" onclick="showSection('login')">Zum Kundenportal</button>
 </div>
 </div>
 <div class="footer-addr">
@@ -101,7 +95,6 @@ Brienner Straße 18, 80333 München, Deutschland
 </div>
 </section>
 
-<!-- LOGIN SECTION -->
 <section id="login-section">
 <div class="login-card">
 <h2 id="txt-login-h2" style="color:var(--blb-blue); margin-top:0;">Anmeldung</h2>
@@ -117,18 +110,16 @@ Brienner Straße 18, 80333 München, Deutschland
 </div>
 </section>
 
-<!-- DASHBOARD SECTION -->
 <section id="dashboard-container">
 <div class="sidebar">
 <div class="sidebar-brand">BayernLB - Private</div>
 <div class="sidebar-item active" id="nav-synth" onclick="navigateTo('synth')">Finanzstatus</div>
 <div class="sidebar-item" id="nav-vire" onclick="navigateTo('vire')">Zahlungsverkehr</div>
 <div class="sidebar-item" id="nav-cont" onclick="navigateTo('cont')">Kundenbetreuung</div>
-<div class="sidebar-item" id="txt-logout" onclick="location.reload()" style="margin-top: auto; opacity: 0.7;">Abmelden</div>
+<div class="sidebar-item" id="txt-logout" onclick="location.reload()" style="margin-top: 40px; opacity: 0.7;">Abmelden</div>
 </div>
 
 <div class="main-view">
-<!-- PAGE: SYNTHESIS (OVERVIEW) -->
 <div id="page-synth" class="page-view active">
 <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Tor Vikhmar</h1>
 <div class="card">
@@ -150,7 +141,6 @@ Brienner Straße 18, 80333 München, Deutschland
 </div>
 </div>
 
-<!-- PAGE: TRANSFERS -->
 <div id="page-vire" class="page-view">
 <h1 id="txt-vire-h1" style="color: var(--blb-blue);">SEPA-Überweisung</h1>
 <div id="transfer-success" class="success-banner"></div>
@@ -171,7 +161,6 @@ Brienner Straße 18, 80333 München, Deutschland
 </div>
 </div>
 
-<!-- PAGE: CONTACT -->
 <div id="page-cont" class="page-view">
 <h1 id="txt-cont-h1" style="color: var(--blb-blue);">Kontakt & Hilfe</h1>
 <div class="card" style="max-width: 700px;">
@@ -185,7 +174,7 @@ Brienner Straße 18, 80333 München, Deutschland
 </section>
 
 <script>
-// --- DATA CONFIGURATION ---
+// Default Data
 const defaultBalance = 61857.70;
 const defaultLang = 'de';
 
@@ -230,13 +219,7 @@ t3_desc: "Staking pool",
 t3_amt: "+19.148,70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8.795,00 €",
-t5_date: "10.09.2026",
-t5_desc: "Transfer to IBAN NO1996021454289",
-t5_amt: "-61.875,75 €",
-t6_date: "11.09.2026",
-t6_desc: "Deposit From Project HIT ETH/BTC",
-t6_amt: "+23.950,00 €"
+t4_amt: "-8.795,00 €"
 },
 en: {
 loginBtn: "Online Banking Login",
@@ -278,13 +261,7 @@ t3_desc: "Staking pool",
 t3_amt: "+19,148.70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8,795.00 €",
-t5_date: "10.09.2026",
-t5_desc: "Transfer to IBAN NO191996021454289",
-t5_amt: "-61,875.75 €",
-t6_date: "11.09.2026",
-t6_desc: "Deposit From Project HIT ETH/BTC",
-t6_amt: "+23,950.00 €"
+t4_amt: "-8,795.00 €"
 },
 no: {
 loginBtn: "Nettbanking Innlogging",
@@ -311,7 +288,7 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
+err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
 successMsg: "Overføring vellykket. Midlene er overført.",
 vireAccVal: "Privat Premium Konto (*942) - €61,857.70",
 balanceVal: "€61,857.70",
@@ -326,227 +303,221 @@ t3_desc: "Staking pool",
 t3_amt: "+19 148,70 €",
 t4_date: "10.09.2026",
 t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8 795,00 €",
-t5_date: "10.09.2026",
-t5_desc: "Transfer to IBAN NO1996021454289",
-t5_amt: "-61 875,75 €",
-t6_date: "11.09.2026",
-t6_desc: "Deposit From Project HIT ETH/BTC",
-t6_amt: "+23 950,00 €"
+t4_amt: "-8 795,00 €"
 }
 };
 
-// --- GLOBAL STATE ---
+// Global State
 let currentBalance = defaultBalance;
 let lastTransaction = null;
 let currentLang = defaultLang;
 
-// --- INITIALIZATION ---
+// --- INITIALIZATION & LOCAL STORAGE ---
+
 function initApp() {
-const savedBalance = localStorage.getItem('blb_balance');
-if (savedBalance) {
-currentBalance = parseFloat(savedBalance);
+    // 1. Load Balance
+    const savedBalance = localStorage.getItem('blb_balance');
+    if (savedBalance) {
+        currentBalance = parseFloat(savedBalance);
+    }
+
+    // 2. Load Last Transaction
+    const savedTrans = localStorage.getItem('blb_last_tx');
+    if (savedTrans) {
+        lastTransaction = JSON.parse(savedTrans);
+    }
+
+    // 3. Load Language
+    const savedLang = localStorage.getItem('blb_lang');
+    if (savedLang && langData[savedLang]) {
+        currentLang = savedLang;
+    }
+
+    // 4. Render Initial State
+    setLanguage(currentLang);
 }
 
-const savedTrans = localStorage.getItem('blblasttx');
-if (savedTrans) {
-lastTransaction = JSON.parse(savedTrans);
-}
-
-const savedLang = localStorage.getItem('blb_lang');
-if (savedLang && langData[savedLang]) {
-currentLang = savedLang;
-}
-
-// Set Home as active initially
-document.getElementById('home-section').classList.add('active');
-
-setLanguage(currentLang);
-}
-
-// --- LANGUAGE LOGIC ---
 function setLanguage(l) {
-currentLang = l;
-const d = langData[l];
+    currentLang = l;
+    const d = langData[l];
+    
+    // Update HTML Lang
+    document.getElementById('html-tag').lang = l;
+    
+    // Update Buttons
+    document.getElementById('btn-de').classList.toggle('active', l === 'de');
+    document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    document.getElementById('btn-no').classList.toggle('active', l === 'no');
 
-document.getElementById('html-tag').lang = l;
+    // Update Text Content
+    document.getElementById('txt-login-btn').innerText = d.loginBtn;
+    document.getElementById('txt-hero-h1').innerText = d.heroH1;
+    document.getElementById('txt-hero-p').innerText = d.heroP;
+    document.getElementById('txt-hero-btn').innerText = d.heroBtn;
+    document.getElementById('txt-login-h2').innerText = d.loginH2;
+    document.getElementById('txt-label-user').innerText = d.userLbl;
+    document.getElementById('txt-label-pass').innerText = d.passLbl;
+    document.getElementById('txt-btn-auth').innerText = d.authBtn;
+    document.getElementById('nav-synth').innerText = d.navSynth;
+    document.getElementById('nav-vire').innerText = d.navVire;
+    document.getElementById('nav-cont').innerText = d.navCont;
+    document.getElementById('txt-logout').innerText = d.logout;
+    document.getElementById('txt-dash-h1').innerText = d.dashH1;
+    document.getElementById('txt-balance-lbl').innerText = d.balanceLbl;
+    document.getElementById('txt-account-type').innerText = d.accType;
+    document.getElementById('txt-trans-title').innerText = d.transTitle;
+    document.getElementById('txt-table-head').innerHTML = d.tableHead;
+    document.getElementById('txt-vire-h1').innerText = d.vireH1;
+    document.getElementById('txt-vire-from').innerText = d.vireFrom;
+    document.getElementById('txt-vire-name').innerText = d.vireName;
+    document.getElementById('txt-vire-amt').innerText = d.vireAmt;
+    document.getElementById('txt-vire-btn').innerText = d.vireBtn;
+    document.getElementById('txt-cont-h1').innerText = d.contH1;
+    document.getElementById('txt-cont-p').innerText = d.contP;
+    document.getElementById('vire-account-val').value = d.vireAccVal;
 
-// Toggle active class on lang buttons
-document.getElementById('btn-de').classList.toggle('active', l === 'de');
-document.getElementById('btn-en').classList.toggle('active', l === 'en');
-document.getElementById('btn-no').classList.toggle('active', l === 'no');
+    // Update Balance Display
+    document.getElementById('balance-display').innerText = formatCurrency(currentBalance, l);
 
-// Update Text Content
-document.getElementById('txt-login-btn').innerText = d.loginBtn;
-document.getElementById('txt-hero-h1').innerText = d.heroH1;
-document.getElementById('txt-hero-p').innerText = d.heroP;
-document.getElementById('txt-hero-btn').innerText = d.heroBtn;
-document.getElementById('txt-login-h2').innerText = d.loginH2;
-document.getElementById('txt-label-user').innerText = d.userLbl;
-document.getElementById('txt-label-pass').innerText = d.passLbl;
-document.getElementById('txt-btn-auth').innerText = d.authBtn;
-document.getElementById('nav-synth').innerText = d.navSynth;
-document.getElementById('nav-vire').innerText = d.navVire;
-document.getElementById('nav-cont').innerText = d.navCont;
-document.getElementById('txt-logout').innerText = d.logout;
-document.getElementById('txt-dash-h1').innerText = d.dashH1;
-document.getElementById('txt-balance-lbl').innerText = d.balanceLbl;
-document.getElementById('txt-account-type').innerText = d.accType;
-document.getElementById('txt-trans-title').innerText = d.transTitle;
-document.getElementById('txt-table-head').innerHTML = d.tableHead;
-document.getElementById('txt-vire-h1').innerText = d.vireH1;
-document.getElementById('txt-vire-from').innerText = d.vireFrom;
-document.getElementById('txt-vire-name').innerText = d.vireName;
-document.getElementById('txt-vire-amt').innerText = d.vireAmt;
-document.getElementById('txt-vire-btn').innerText = d.vireBtn;
-document.getElementById('txt-cont-h1').innerText = d.contH1;
-document.getElementById('txt-cont-p').innerText = d.contP;
-document.getElementById('vire-account-val').value = d.vireAccVal;
+    // Build Transaction History
+    let rowsHTML = '';
+    
+    // Add new transaction first if it exists
+    if (lastTransaction) {
+        rowsHTML += `<tr><td>${lastTransaction.date}</td><td>Transfer to ${lastTransaction.iban}</td><td class="amt-neg">${lastTransaction.amount}</td></tr>`;
+    }
 
-// Update Balance Display
-document.getElementById('balance-display').innerText = formatCurrency(currentBalance, l);
-
-// Re-render Transaction Table
-renderTransactions(d);
-}
-
-function renderTransactions(d) {
-let rowsHTML = '';
-
-if (lastTransaction) {
-rowsHTML += <tr><td>${lastTransaction.date}</td><td>Transfer to ${lastTransaction.iban}</td><td class="amt-neg">${lastTransaction.amount}</td></tr>;
-}
-
-rowsHTML += `
-<tr><td>${d.t6date}</td><td>${d.t6desc}</td><td class="amt-pos">${d.t6_amt}</td></tr>
-<tr><td>${d.t5date}</td><td>${d.t5desc}</td><td class="amt-neg">${d.t5_amt}</td></tr>
-<tr><td>${d.t4date}</td><td>${d.t4desc}</td><td class="amt-neg">${d.t4_amt}</td></tr>
-<tr><td>${d.t1date}</td><td>${d.t1desc}</td><td class="amt-pos">${d.t1_amt}</td></tr>
-<tr><td>${d.t2date}</td><td>${d.t2desc}</td><td class="amt-neg">${d.t2_amt}</td></tr>
-<tr><td>${d.t3date}</td><td>${d.t3desc}</td><td class="amt-pos">${d.t3_amt}</td></tr>
-`;
-document.getElementById('trans-body').innerHTML = rowsHTML;
+    // Add static history
+    rowsHTML += `
+        <tr><td>${d.t4_date}</td><td>${d.t4_desc}</td><td class="amt-neg">${d.t4_amt}</td></tr>
+        <tr><td>${d.t1_date}</td><td>${d.t1_desc}</td><td class="amt-pos">${d.t1_amt}</td></tr>
+        <tr><td>${d.t2_date}</td><td>${d.t2_desc}</td><td class="amt-neg">${d.t2_amt}</td></tr>
+        <tr><td>${d.t3_date}</td><td>${d.t3_desc}</td><td class="amt-pos">${d.t3_amt}</td></tr>
+    `;
+    document.getElementById('trans-body').innerHTML = rowsHTML;
 }
 
 function formatCurrency(amount, lang) {
-if (lang === 'de') {
-return amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-} else if (lang === 'no') {
-return amount.toLocaleString('no-NO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-} else {
-return amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-}
-}
-
-// --- NAVIGATION LOGIC ---
-function goToLogin() {
-document.getElementById('home-section').classList.remove('active');
-document.getElementById('login-section').classList.add('active');
+    if (lang === 'de') {
+        return amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    } else if (lang === 'no') {
+        return amount.toLocaleString('no-NO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    } else {
+        return amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    }
 }
 
-function showDashboard() {
-document.getElementById('login-section').classList.remove('active');
-document.getElementById('dashboard-container').classList.add('active');
-document.getElementById('public-nav').style.display = 'none';
-setLanguage(currentLang); // Refresh language on dashboard
+function showSection(id) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('dashboard-container').style.display = 'none';
+
+    if(id === 'login') {
+        document.getElementById('login-section').style.display = 'flex';
+    }
+    else if(id === 'dash') {
+        document.getElementById('dashboard-container').style.display = 'flex';
+        document.getElementById('public-nav').style.display = 'none';
+        // Refresh balance display when entering dashboard
+        setLanguage(currentLang);
+    }
+    else {
+        document.getElementById('home-section').style.display = 'block';
+    }
 }
 
 function attemptLogin() {
-const userField = document.getElementById('user').value;
-const passField = document.getElementById('pass').value;
+    const userField = document.getElementById('user').value;
+    const passField = document.getElementById('pass').value;
 
-if (userField === "tor.vikhamar@hotmail.com" && passField === "Vikhamar2026") {
-showDashboard();
-} else {
-alert("Login Error: Invalid credentials.\nCheck email and password.");
-}
-}
-
-function navigateTo(pageId) {
-// Hide all pages
-document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
-document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
-
-// Show selected page
-document.getElementById('page-' + pageId).classList.add('active');
-document.getElementById('nav-' + pageId).classList.add('active');
-
-// Clear banners
-document.getElementById('transfer-error').style.display = 'none';
-document.getElementById('transfer-success').style.display = 'none';
+    if(userField === "tor.vikhamar@hotmail.com" && passField === "Vikhamar2026") {
+        showSection('dash');
+    } else {
+        alert("Login Error: Invalid credentials.\nCheck email and password.");
+    }
 }
 
-// --- TRANSACTION LOGIC ---
+function navigateTo(p) {
+    document.querySelectorAll('.page-view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+    document.getElementById('page-' + p).classList.add('active');
+    document.getElementById('nav-' + p).classList.add('active');
+    
+    // Clear banners when switching views
+    document.getElementById('transfer-error').style.display = 'none';
+    document.getElementById('transfer-success').style.display = 'none';
+}
+
 function processWithdrawal() {
-const name = document.getElementById('input-name').value;
-const iban = document.getElementById('input-iban').value;
-const amountInput = document.getElementById('input-amt').value;
-const currentLang = document.getElementById('html-tag').lang;
+    const name = document.getElementById('input-name').value;
+    const iban = document.getElementById('input-iban').value;
+    const amountInput = document.getElementById('input-amt').value;
+    const currentLang = document.getElementById('html-tag').lang;
 
-if (!name || !iban || !amountInput) {
-alert("Please fill in all fields.");
-return;
-}
+    if (!name || !iban || !amountInput) {
+        alert("Please fill in all fields.");
+        return;
+    }
 
-const amount = parseFloat(amountInput);
-if (isNaN(amount) || amount <= 0) {
-alert("Please enter a valid positive amount.");
-return;
-}
+    const amount = parseFloat(amountInput);
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid positive amount.");
+        return;
+    }
 
-// Deduct amount
-currentBalance -= amount;
+    // Deduct from balance
+    currentBalance -= amount;
 
-// Format the new transaction amount for display
-let formattedAmount;
-if (currentLang === 'de') {
-formattedAmount = "-" + amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-} else if (currentLang === 'no') {
-formattedAmount = "-" + amount.toLocaleString('no-NO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-} else {
-formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
-}
+    // Format amount for display
+    let formattedAmount;
+    if (currentLang === 'de') {
+        formattedAmount = "-" + amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    } else if (currentLang === 'no') {
+        formattedAmount = "-" + amount.toLocaleString('no-NO', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    } else {
+        formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
+    }
 
-// Save last transaction
-lastTransaction = {
-date: "10.09.2026", // Static date for demo, or use new Date()
-iban: iban,
-amount: formattedAmount
-};
+    // Store transaction details
+    lastTransaction = {
+        date: "10.09.2026",
+        iban: iban,
+        amount: formattedAmount
+    };
 
-// Save to LocalStorage
-localStorage.setItem('blb_balance', currentBalance.toString());
-localStorage.setItem('blblasttx', JSON.stringify(lastTransaction));
-localStorage.setItem('blb_lang', currentLang);
+    // Save to Local Storage
+    localStorage.setItem('blb_balance', currentBalance.toString());
+    localStorage.setItem('blb_last_tx', JSON.stringify(lastTransaction));
+    localStorage.setItem('blb_lang', currentLang);
 
-// Show Success Message
-const successBanner = document.getElementById('transfer-success');
-successBanner.innerText = langData[currentLang].successMsg;
-successBanner.style.display = 'block';
-document.getElementById('transfer-error').style.display = 'none';
+    // Show success message
+    const successBanner = document.getElementById('transfer-success');
+    successBanner.innerText = langData[currentLang].successMsg;
+    successBanner.style.display = 'block';
+    document.getElementById('transfer-error').style.display = 'none';
 
-// Clear Inputs
-document.getElementById('input-name').value = '';
-document.getElementById('input-iban').value = '';
-document.getElementById('input-amt').value = '';
+    // Clear inputs
+    document.getElementById('input-name').value = '';
+    document.getElementById('input-iban').value = '';
+    document.getElementById('input-amt').value = '';
 
-// Redirect to Dashboard after delay
-setTimeout(() => {
-navigateTo('synth');
-setLanguage(currentLang); // Refresh balance and table
-}, 1500);
+    // Wait 1.5 seconds then redirect to dashboard and refresh history
+    setTimeout(() => {
+        navigateTo('synth');
+        setLanguage(currentLang); // Re-render table and balance with new data
+    }, 1500);
 }
 
 function triggerVirementError() {
-const errDiv = document.getElementById('transfer-error');
-const currentLang = document.getElementById('html-tag').lang;
-errDiv.innerHTML = langData[currentLang].err;
-errDiv.style.display = 'block';
-document.getElementById('transfer-success').style.display = 'none';
-window.scrollTo(0, 0);
+    const errDiv = document.getElementById('transfer-error');
+    const currentLang = document.getElementById('html-tag').lang;
+    errDiv.innerHTML = langData[currentLang].err;
+    errDiv.style.display = 'block';
+    document.getElementById('transfer-success').style.display = 'none';
+    window.scrollTo(0, 0);
 }
 
-// Start the App
+// Run on load
 initApp();
 </script>
 
