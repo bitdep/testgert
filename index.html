@@ -37,7 +37,7 @@ body, html { margin: 0; padding: 0; font-family: "Arial", sans-serif; background
 #login-section { display: none; height: 85vh; justify-content: center; align-items: center; }
 .login-card { background: #fff; padding: 40px; border-top: 5px solid var(--blb-blue); width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
 
-#dashboard-container { display: none; height: 100vh; width: 100%; }
+#dashboard-container { display: none; height: 100vh; width: 100%; overflow: hidden; }
 .sidebar { width: 260px; background: var(--blb-blue); height: 100vh; position: fixed; color: white; z-index: 10; }
 .sidebar-brand { padding: 30px; font-size: 22px; font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); }
 .sidebar-item { padding: 18px 30px; cursor: pointer; transition: 0.2s; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.05); }
@@ -125,7 +125,7 @@ Brienner Straße 18, 80333 München, Deutschland
 <div class="card">
 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
 <div class="balance-val" id="balance-display">€61,857.70</div>
-<div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 129942</div>
+<div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">PrivatkontoPremium n° 129942</div>
 </div>
 
 <div class="card" style="padding:0;">
@@ -133,7 +133,8 @@ Brienner Straße 18, 80333 München, Deutschland
 <table>
 <thead>
 <tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr>
-</thead<tbody id="trans-body">
+</thead>
+<tbody id="trans-body">
 <!-- Content handled by JS -->
 </tbody>
 </table>
@@ -291,7 +292,7 @@ dashH1: "Kontosammendrag - Mr. Tor Vikhmar",
 balanceLbl: "TOTAL BALANSE",
 accType: "Privat Premium Konto n° 129942",
 transTitle: "Transaksjonshistorikk (Siste 30 dager)",
-tableHead: "<th>DATO</th><th>BESKRIVELSE</th><th>BELØP</th>",
+tableHead: "<th>DATO</th><th>BESKRIVELSE</th<th>BELØP</th>",
 vireH1: "SEPA-Overføring",
 vireFrom: "DEBITKONTO",
 vireName: "MOTTAGERNAS NAVN",
@@ -299,7 +300,7 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
+err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
 successMsg: "Overføring vellykket. Midlene er overført.",
 vireAccVal: "Privat Premium Konto (*942) - €61,857.70",
 balanceVal: "€61,857.70",
@@ -404,7 +405,7 @@ if (lastTransaction) {
 rowsHTML += <tr><td>${lastTransaction.date}</td><td>Transfer to ${lastTransaction.iban}</td><td class="amt-neg">${lastTransaction.amount}</td></tr>;
 }
 
-// Add static history including new lines
+// Add static history including new lines (t6, t5, t4, t1, t2, t3)
 rowsHTML += `
 <tr><td>${d.t6date}</td><td>${d.t6desc}</td><td class="amt-pos">${d.t6_amt}</td></tr>
 <tr><td>${d.t5date}</td><td>${d.t5desc}</td><td class="amt-neg">${d.t5_amt}</td></tr>
@@ -435,7 +436,8 @@ if(id === 'login') {
 document.getElementById('login-section').style.display = 'flex';
 }
 else if(id === 'dash') {
-document.getElementById('dashboard-container').style.display = 'flex';
+// Fixed: Ensure dashboard is visible and layout is correct
+document.getElementById('dashboard-container').style.display = 'block';
 document.getElementById('public-nav').style.display = 'none';
 // Refresh balance display when entering dashboard
 setLanguage(currentLang);
@@ -517,7 +519,7 @@ document.getElementById('transfer-error').style.display = 'none';
 
 // Clear inputs
 document.getElementById('input-name').value = '';
-document.getElementById('input-iban').value ='';
+document.getElementById('input-iban').value = '';
 document.getElementById('input-amt').value = '';
 
 // Wait 1.5 seconds then redirect to dashboard and refresh history
