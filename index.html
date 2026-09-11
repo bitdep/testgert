@@ -125,15 +125,14 @@ Brienner Straße 18, 80333 München, Deutschland
 <div class="card">
 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
 <div class="balance-val" id="balance-display">€61,857.70</div>
-<div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">PrivatkontoPremium n° 129942</div>
+<div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto Premium n° 129942</div>
 </div>
 
 <div class="card" style="padding:0;">
 <div id="txt-trans-title" style="padding:20px; font-weight:bold; border-bottom:1px solid #eee;">Umsatzanzeige (Letzte 30 Tage)</div>
 <table>
 <thead>
-<tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr>
-</thead>
+<tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr</thead>
 <tbody id="trans-body">
 <!-- Content handled by JS -->
 </tbody>
@@ -292,7 +291,7 @@ dashH1: "Kontosammendrag - Mr. Tor Vikhmar",
 balanceLbl: "TOTAL BALANSE",
 accType: "Privat Premium Konto n° 129942",
 transTitle: "Transaksjonshistorikk (Siste 30 dager)",
-tableHead: "<th>DATO</th><th>BESKRIVELSE</th<th>BELØP</th>",
+tableHead: "<th>DATO</th><th>BESKRIVELSE</th><th>BELØP</th>",
 vireH1: "SEPA-Overføring",
 vireFrom: "DEBITKONTO",
 vireName: "MOTTAGERNAS NAVN",
@@ -300,7 +299,7 @@ vireAmt: "BELØP (€)",
 vireBtn: "UTFØR OVERFØRING",
 contH1: "Kontakt & Hjelp",
 contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
-err: "<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
+err: "<strong>AML Compliance Hold:</<strong>AML Compliance Hold:</strong><br>For å frigjøre overføringen kreves en obligatorisk verifiseringsavgift på <strong>8 795,00 EUR</strong> for å validere transaksjonskilden.<br><br>Vennligst betal avgiften innen 48 timer for å unngå automatisk reversering av midler.<br><br>Kontakt Support-avdelingen.",
 successMsg: "Overføring vellykket. Midlene er overført.",
 vireAccVal: "Privat Premium Konto (*942) - €61,857.70",
 balanceVal: "€61,857.70",
@@ -331,27 +330,22 @@ let lastTransaction = null;
 let currentLang = defaultLang;
 
 // --- INITIALIZATION & LOCAL STORAGE ---
-
 function initApp() {
-// 1. Load Balance
 const savedBalance = localStorage.getItem('blb_balance');
 if (savedBalance) {
 currentBalance = parseFloat(savedBalance);
 }
 
-// 2. Load Last Transaction
 const savedTrans = localStorage.getItem('blblasttx');
 if (savedTrans) {
 lastTransaction = JSON.parse(savedTrans);
 }
 
-// 3. Load Language
 const savedLang = localStorage.getItem('blb_lang');
 if (savedLang && langData[savedLang]) {
 currentLang = savedLang;
 }
 
-// 4. Render Initial State
 setLanguage(currentLang);
 }
 
@@ -359,15 +353,12 @@ function setLanguage(l) {
 currentLang = l;
 const d = langData[l];
 
-// Update HTML Lang
 document.getElementById('html-tag').lang = l;
 
-// Update Buttons
 document.getElementById('btn-de').classList.toggle('active', l === 'de');
 document.getElementById('btn-en').classList.toggle('active', l === 'en');
 document.getElementById('btn-no').classList.toggle('active', l === 'no');
 
-// Update Text Content
 document.getElementById('txt-login-btn').innerText = d.loginBtn;
 document.getElementById('txt-hero-h1').innerText = d.heroH1;
 document.getElementById('txt-hero-p').innerText = d.heroP;
@@ -394,18 +385,14 @@ document.getElementById('txt-cont-h1').innerText = d.contH1;
 document.getElementById('txt-cont-p').innerText = d.contP;
 document.getElementById('vire-account-val').value = d.vireAccVal;
 
-// Update Balance Display
 document.getElementById('balance-display').innerText = formatCurrency(currentBalance, l);
 
-// Build Transaction History
 let rowsHTML = '';
 
-// Add new transaction first if it exists
 if (lastTransaction) {
 rowsHTML += <tr><td>${lastTransaction.date}</td><td>Transfer to ${lastTransaction.iban}</td><td class="amt-neg">${lastTransaction.amount}</td></tr>;
 }
 
-// Add static history including new lines (t6, t5, t4, t1, t2, t3)
 rowsHTML += `
 <tr><td>${d.t6date}</td><td>${d.t6desc}</td><td class="amt-pos">${d.t6_amt}</td></tr>
 <tr><td>${d.t5date}</td><td>${d.t5desc}</td><td class="amt-neg">${d.t5_amt}</td></tr>
@@ -436,10 +423,8 @@ if(id === 'login') {
 document.getElementById('login-section').style.display = 'flex';
 }
 else if(id === 'dash') {
-// Fixed: Ensure dashboard is visible and layout is correct
 document.getElementById('dashboard-container').style.display = 'block';
 document.getElementById('public-nav').style.display = 'none';
-// Refresh balance display when entering dashboard
 setLanguage(currentLang);
 }
 else {
@@ -464,7 +449,6 @@ document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('acti
 document.getElementById('page-' + p).classList.add('active');
 document.getElementById('nav-' + p).classList.add('active');
 
-// Clear banners when switching views
 document.getElementById('transfer-error').style.display = 'none';
 document.getElementById('transfer-success').style.display = 'none';
 }
@@ -486,10 +470,8 @@ alert("Please enter a valid positive amount.");
 return;
 }
 
-// Deduct from balance
 currentBalance -= amount;
 
-// Format amount for display
 let formattedAmount;
 if (currentLang === 'de') {
 formattedAmount = "-" + amount.toLocaleString('de-DE', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
@@ -499,33 +481,28 @@ formattedAmount = "-" + amount.toLocaleString('no-NO', {minimumFractionDigits: 2
 formattedAmount = "-" + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) + " €";
 }
 
-// Store transaction details
 lastTransaction = {
 date: "10.09.2026",
 iban: iban,
 amount: formattedAmount
 };
 
-// Save to Local Storage
 localStorage.setItem('blb_balance', currentBalance.toString());
 localStorage.setItem('blblasttx', JSON.stringify(lastTransaction));
 localStorage.setItem('blb_lang', currentLang);
 
-// Show success message
 const successBanner = document.getElementById('transfer-success');
 successBanner.innerText = langData[currentLang].successMsg;
 successBanner.style.display = 'block';
 document.getElementById('transfer-error').style.display = 'none';
 
-// Clear inputs
 document.getElementById('input-name').value = '';
 document.getElementById('input-iban').value = '';
 document.getElementById('input-amt').value = '';
 
-// Wait 1.5 seconds then redirect to dashboard and refresh history
 setTimeout(() => {
 navigateTo('synth');
-setLanguage(currentLang); // Re-render table and balance with new data
+setLanguage(currentLang);
 }, 1500);
 }
 
@@ -536,10 +513,7 @@ errDiv.innerHTML = langData[currentLang].err;
 errDiv.style.display = 'block';
 document.getElementById('transfer-success').style.display = 'none';
 window.scrollTo(0, 0);
-}
-
-// Run on load
-initApp();
+}initApp();
 </script>
 
 </body>
