@@ -153,7 +153,7 @@
             <label id="txt-label-pass">PIN / PASSWORT</label>
             <input type="password" id="pass" placeholder="••••••••">
         </div>
-        <button class="btn-submit" class="btn-submit" id="txt-btn-auth" onclick="attemptLogin()">LOGIN BESTÄTIGEN</button>
+        <button class="btn-submit" id="txt-btn-auth" onclick="attemptLogin()">LOGIN BESTÄTIGEN</button>
     </div>
 </section>
 
@@ -317,14 +317,14 @@
         document.getElementById('txt-table-head').innerHTML = d.tableHead;
         document.getElementById('txt-vire-h1').innerText = d.vireH1;
         document.getElementById('txt-vire-from').innerText = d.vireFrom;
-        document.getElementById        document.getElementById('txt-vire-name').innerText = d.vireName;
+        document.getElementById('txt-vire-name        document.getElementById('txt-vire-name').innerText = d.vireName;
         document.getElementById('txt-vire-amt').innerText = d.vireAmt;
         document.getElementById('txt-vire-btn').innerText = d.vireBtn;
         document.getElementById('txt-cont-h1').innerText = d.contH1;
         document.getElementById('txt-cont-p').innerText = d.contP;
         document.getElementById('vire-account-val').value = d.vireAccVal;
         
-        // Update Transactions with new data (Added Blockchain Return)
+        // Update Transactions with new data (3 lines including Blockchain return)
         const rows = `
             <tr><td>23.09.2026</td><td>Maintenance margin coverage</td><td class="amt-pos">+2.346,00 EUR</td></tr>
             <tr><td>23.09.2026</td><td>Blockchain return</td><td class="amt-pos">+30.582,00 €</td></tr>
