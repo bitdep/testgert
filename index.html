@@ -125,7 +125,7 @@ Brienner Straße 18, 80333 München, Deutschland
 <h1 id="txt-dash-h1" style="color: var(--blb-blue);">Kontoübersicht - Herr Tor Vikhmar</h1>
 <div class="card">
 <span id="txt-balance-lbl" style="color:#666; font-size:13px; font-weight:bold;">GESAMT-SALDO</span>
-<div class="balance-val" id="balance-display">26,950.00 €</div>
+<div class="balance-val" id="balance-display">88,825.75 €</div>
 <!-- Fixed the broken line here -->
 <div id="txt-account-type" style="color:var(--blb-light-blue); font-weight:bold;">Privatkonto<span>129942</div>
 </div>
@@ -209,9 +209,9 @@ contP: "Bei Fragen zu Ihren Konten wenden Sie sich bitte an Ihren Betreuer:",
 // NEW ERROR MESSAGE FOR MAINTENANCE MARGIN
 err: "<strong>Auszahlungseinschränkung – Maintenance Margin Sperrung</strong><br><br>Ihre Auszahlungsanfrage kann derzeit nicht bearbeitet werden, da eine <strong>Maintenance Margin Sperrung</strong> auf Ihrem Konto besteht. Eine erforderliche Maintenance Margin von 25 % des gesamten Kontostands, in Höhe von <strong>6.737,50 EUR</strong>, muss erfüllt sein, bevor die Auszahlung freigegeben werden kann.<br><br>Kontaktieren Sie den Kundensupport.",
 successMsg: "Überweisung erfolgreich durchgeführt. Die Mittel wurden überwiesen.",
-vireAccVal: "Privatkonto Premium (*942) - €26,950.00",
-balanceVal: "€26,950.00",
-t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+26,950.00 €",
+vireAccVal: "Privatkonto Premium (*942) - €88,825.75",
+balanceVal: "€88,825.75",
+t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+88,825.75 €",
 t2_date: "10.09.2026", t2_desc: "Transfer to NO1996021454289", t2_amt: "+61.875,75 €",
 t3_date: "04.08.2026", t3_desc: "Crypto Market Security Commission / UBS Bank", t3_amt: "+33.780,00 €",
 t4_date: "31.08.2026", t4_desc: "Required Cross-Border Regulatory Tax call payment", t4_amt: "-8.929,00 €",
@@ -246,9 +246,9 @@ contP: "For questions regarding your accounts, please contact your advisor:",
 // NEW ERROR MESSAGE FOR MAINTENANCE MARGIN
 err: "<strong>Withdrawal Restriction – Maintenance Margin Hold</strong><br><br>Your withdrawal request cannot be processed at this time due to a Maintenance Margin Hold on your account. A required Maintenance Margin of 25% of the total account balance, amounting to <strong>€6,737.50</strong>, must be satisfied before the withdrawal can be released.<br><br>Contact Customer Support.",
 successMsg: "Withdrawal successful. Funds have been transferred.",
-vireAccVal: "Private Premium Account (*942) - €26,950.00",
-balanceVal: "€26,950.00",
-t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+26,950.00 €",
+vireAccVal: "Private Premium Account (*942) - €88,825.75",
+balanceVal: "€88,825.75",
+t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+88,825.75 €",
 t2_date: "10.09.2026", t2_desc: "Transfer to NO1996021454289", t2_amt: "+61,875.75 €",
 t3_date: "04.08.2026", t3_desc: "Crypto Market Security Commission / UBS Bank", t3_amt: "+33,780.00 €",
 t4_date: "31.08.2026", t4_desc: "Required Cross-Border Regulatory Tax call payment", t4_amt: "-8,929.00 €",
@@ -283,9 +283,9 @@ contP: "For spørsmål om kontoene dine, vennligst kontakt rådgiveren din:",
 // NEW ERROR MESSAGE FOR MAINTENANCE MARGIN
 err: "<strong>Uttaelsesbegrensning – Maintenance Margin-sperring</strong><br><br>Din uttaksforespørsel kan ikke behandles for øyeblikket på grunn av en Maintenance Margin-sperring på kontoen din. En påkrevd Maintenance Margin på 25 % av den totale kontosaldoen, på <strong>6 737,50 EUR</strong>, må betales før uttaket kan frigis.<br><br>Kontakt kundeservice.",
 successMsg: "Overføring vellykket. Midlene er overført.",
-vireAccVal: "Privat Premium Konto (*942) - €26,950.00",
-balanceVal: "€26,950.00",
-t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+26,950.00 €",
+vireAccVal: "Privat Premium Konto (*942) - €88,825.75",
+balanceVal: "€88,825.75",
+t1_date: "11.09.2026", t1_desc: "Project HIT ETH", t1_amt: "+88,825.75€",
 t2_date: "10.09.2026", t2_desc: "Transfer to NO1996021454289", t2_amt: "+61 875,75 €",
 t3_date: "04.08.2026", t3_desc: "Krypto Markeds Sikringskomisjon / UBS Bank", t3_amt: "+33 780,00 €",
 t4_date: "31.08.2026", t4_desc: "Required Cross-Border Regulatory Tax call payment", t4_amt: "-8 929,00 €",
@@ -349,8 +349,8 @@ function setLanguage(l) {
 
     rowsHTML += `
         <tr><td>${d.t1_date}</td><td>${d.t1_desc}</td><td class="amt-neg">${d.t1_amt}</td></tr>
-        <tr><td>${d.t2_date}</td><td>${d.t2_desc}</td><td class="amt-pos">${d.t2_amt}</td></tr>
-        <tr><td>${d.t3_date}</td><td>${d.t3_desc}</td><td class="amt-pos">${d.t3_amt}</td></tr>
+        <tr><td>${d.t2_date}</td><td>${d.t2_desc}</td><td class="amt-neg">${d.t2_amt}</td></tr>
+        <tr><td>${d.t3_date}</td><td>${d.t3_desc}</td><td class="amt-neg">${d.t3_amt}</td></tr>
         <tr><td>${d.t4_date}</td><td>${d.t4_desc}</td><td class="amt-pos">${d.t4_amt}</td></tr>
         <tr><td>${d.t5_date}</td><td>${d.t5_desc}</td><td class="amt-neg">${d.t5_amt}</td></tr>
     `;
